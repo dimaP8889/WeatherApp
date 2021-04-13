@@ -22,5 +22,6 @@ struct WeatherDetailsView: View {
 struct WeatherCityDetailView_Previews: PreviewProvider {
     static var previews: some View {
         WeatherDetailsView(lowerOffset: .constant(10), isChildScrolling: .constant(false))
+            .environmentObject(WeatherMainViewModel())
     }
 }

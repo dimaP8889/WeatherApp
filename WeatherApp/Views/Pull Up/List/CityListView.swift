@@ -16,6 +16,8 @@ struct CityListView: View {
     
     @ObservedObject var viewModel : CityListViewModel
     
+    @EnvironmentObject var parentsData: WeatherMainViewModel
+    
     private var listOffset : CGFloat = 115
     
     init(lowerOffset: Binding<CGFloat>, isChildScrolling: Binding<Bool>, viewModel: CityListViewModel, isNeedAnimation: Binding<Bool>) {
@@ -96,6 +98,9 @@ struct CityListView: View {
                     
                     ForEach(letterData.cities, id: \.city) { placeData in
                         Text("\(placeData.city), \(placeData.country)")
+                            .onTapGesture {
+                                parentsData.search(city: placeData.city, country: placeData.country)
+                            }
                             .font(.system(size: 18, weight: .light, design: .default))
                             .padding([.top, .bottom], 9)
                     }

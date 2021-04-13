@@ -20,8 +20,8 @@ final class FileParser {
             
             guard words.count >= 2 else { return }
             
-            let city = String(words[0])
-            let country = String(words[1])
+            let city = String(words[1])
+            let country = String(words[0])
             appendNewCity(model: &model, city: city, country: country)
         }
         return model.sorted { $0.letter < $1.letter }
